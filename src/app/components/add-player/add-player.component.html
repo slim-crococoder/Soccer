@@ -1,0 +1,46 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Add Player</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form #playerForm='ngForm' (ngSubmit)='addPlayer()'>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]='player.nom' [ngModelOptions]="{standalone: true}" placeholder="nom">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]='player.prenom' [ngModelOptions]="{standalone: true}" placeholder="prenom">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]='player.age' [ngModelOptions]="{standalone: true}" placeholder="age">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]='player.poste' [ngModelOptions]="{standalone: true}" placeholder="poste">
+                    </div>
+                    <!-- pour ajouter une image dans la base de données -->
+                    <button type="button" (click)='filePicker.click()' class="btn btn-success">
+                        Sélectionner image</button>
+                    <div class="form-group">
+                        <input style="visibility: hidden;" type="file" class="form-control" #filePicker (change)='onImageSelected($event)' />
+                    </div>
+                    <!-- *ngIf='imagePreview' bech menafichiouech image si elle existe -->
+                    <img [src]="imagePreview" *ngIf='imagePreview' height='100px' width='100px'>
+                    <!-- end ajout image -->
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="Add Player">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

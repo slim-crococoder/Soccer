@@ -1,0 +1,22 @@
+<table class="table table-bordered table-dark">
+
+    <tr>
+        <td>{{m._id}}</td>
+        <td>{{m.teamOne}}</td>
+        <td>{{m.scoreOne}}-{{m.scoreTwo}}</td>
+        <td>{{m.teamTwo}}</td>
+        <td>
+            <button class='btn btn-danger' (click)='delete(m._id)'>delete</button>
+
+        </td>
+        <td>
+            <button class='btn btn-danger' (click)='edit(m._id)'>edit</button>
+        </td>
+        <td>
+            <button class='btn btn-succes' (click)='displayMatch(m._id)'>display</button>
+        </td>
+
+
+    </tr>
+
+</table>

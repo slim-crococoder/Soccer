@@ -1,0 +1,219 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Admin</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-12">
+    <div class="academy-tabs-content">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="tab--1" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab--2" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Matchs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab--3" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="true">Player</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tab--5" data-toggle="tab" href="#tab5" role="tab" aria-controls="tab5" aria-selected="true">stadium</a>
+            </li>
+        </ul>
+
+
+        <div class="tab-content mb-100" id="myTabContent">
+            <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab--1">
+                <div class="academy-tab-content">
+                    <!-- Tab Text -->
+                    <!-- Contact Form Area -->
+                    <div class="col-12 col-lg-7">
+                        <div class="contact-form-area wow fadeInUp" data-wow-delay="100ms">
+                            <table class="table table-bordered table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Email</th>
+                                    <th>Delete</th>
+                                    <th>Edit</th>
+                                    <th>Display</th>
+
+                                </tr>
+                                <tr *ngFor='let u of users'>
+                                    <td>{{u._id}}</td>
+                                    <td>{{u.firstName}}</td>
+                                    <td>{{u.lastName}}</td>
+                                    <td>{{u.email}}</td>
+                                    <td>
+                                        <button class='btn btn-danger' (click)='deleteUser(u._id)'>delete</button>
+
+                                    </td>
+                                    <td>
+                                        <button class='btn btn-danger' (click)='editUser(u._id)'>edit</button>
+                                    </td>
+                                    <td>
+                                        <button class='btn btn-succes' (click)='displayUser(u._id)'>display</button>
+                                    </td>
+
+
+                                </tr>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade " id="tab2" role="tabpanel" aria-labelledby="tab--2">
+                <div class="academy-tab-content">
+                    <!-- Tab Text -->
+                    <div class="academy-tab-text">
+                        <div class="col-12 col-lg-7">
+                            <div class="contact-form-area wow fadeInUp" data-wow-delay="100ms">
+                                <table class="table table-bordered table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Team One</th>
+                                        <th>score</th>
+                                        <th>Team two</th>
+                                        <th>delete</th>
+                                        <th>edit</th>
+                                        <th>display</th>
+
+                                    </tr>
+                                    <!-- <tr *ngFor='let m of matchs'>
+                                        <td>{{m._id}}</td>
+                                        <td>{{m.teamOne}}</td>
+                                        <td>{{m.scoreOne}}-{{m.scoreTwo}}</td>
+                                        <td>{{m.teamTwo}}</td>
+                                        <td>
+                                            <button class='btn btn-danger' (click)='deleteMatch(m._id)'>delete</button>
+
+                                        </td>
+                                        <td>
+                                            <button class='btn btn-danger' (click)='editMatch(m._id)'>edit</button>
+                                        </td>
+                                        <td>
+                                            <button class='btn btn-succes' (click)='displayMatch(m._id)'>display</button>
+                                        </td>
+
+
+                                    </tr> -->
+
+                                </table>
+                                <div class="academy-tab-text" *ngFor='let m of matchs'>
+
+                                    <app-match [m]='m' (newStadiums)='updateMatchs($event)'></app-match>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tab3" role="tabpanel" aria-labelledby="tab--3">
+                <div class="academy-tab-content">
+                    <!-- Tab Text -->
+                    <table class="table table-bordered table-dark">
+                        <tr>
+                            <th width='1100px'>ID</th>
+                            <th width='240px'>Nom</th>
+                            <th width='240px'>prenom</th>
+                            <th width='240px'>age</th>
+                            <th width='240px'>poste</th>
+                            <th width='240px'> image</th>
+                            <th width='240px'> delete</th>
+                            <th width='240px'> edit</th>
+                            <th width='240px'> display</th>
+
+                        </tr>
+
+
+
+                    </table>
+                    <div class="academy-tab-text" *ngFor='let j of player'>
+
+                        <app-joueur [j]='j' (newStadiums)='updatePlayers($event)'></app-joueur>
+                        <!-- <table class="table table-bordered table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <th>prenom</th>
+                                <th>age</th>
+                                <th>poste</th>
+                                <th> image</th>
+                                <th> delete</th>
+                                <th> edit</th>
+                                <th> display</th>
+
+                            </tr>
+                            <tr *ngFor='let j of player'>
+                                <td>{{j._id}}</td>
+                                <td>{{j.nom}}</td>
+                                <td>{{j.prenom}}</td>
+                                <td>{{j.age}}</td>
+                                <td>{{j.poste}}</td>
+                                <td><img src={{j.image}} alt="Image" class="img-fluid" width="50px"></td>
+                                <td>
+                                    <button class='btn btn-danger' (click)='delete(j.id)'>delete</button>
+                                </td>
+                                <td>
+                                    <button class='btn btn-danger' (click)='edit(j.id)'>edit</button>
+                                </td>
+                                <td>
+                                    <button class='btn btn-danger' (click)='display(j.id)'>display</button>
+                                </td>
+
+
+                            </tr>
+
+
+                        </table> -->
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="tab5" role="tabpanel" aria-labelledby="tab--5">
+                <div class="academy-tab-content">
+                    <!-- Tab Text -->
+
+                    <table class="table table-bordered table-dark">
+                        <tr>
+                            <th width='240px'>ID</th>
+                            <th width='190px'>name</th>
+                            <th width='200px'>country</th>
+                            <th width='200px'>capacity</th>
+                            <th width='200px'>display</th>
+                            <th width='200px'>delete</th>
+                            <th width='200px'>edit</th>
+
+
+                        </tr>
+
+
+                    </table>
+                    <div class="academy-tab-text" *ngFor='let s of stadiums'>
+
+                        <app-stadium [y]='s' (newStadiums)='updateStadiums($event)'></app-stadium>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>

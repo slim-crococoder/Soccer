@@ -1,0 +1,52 @@
+<table class="table table-bordered table-dark">
+
+    <tr>
+        <td>{{j._id}}</td>
+        <td>{{j.nom}}</td>
+        <td>{{j.prenom}}</td>
+        <td>{{j.age}}</td>
+        <td>{{j.poste}}</td>
+        <td><img src={{j.image}} alt="Image" class="img-fluid" width="50px"></td>
+        <td *ngIf='!id'>
+            <button class='btn btn-danger' (click)='delete(j._id)'>delete</button>
+        </td>
+        <td *ngIf='!id'>
+            <button class='btn btn-danger' (click)='editPlayer(j._id)'>edit</button>
+        </td>
+        <td *ngIf='!id'>
+            <button class='btn btn-danger' (click)='display(j._id)'>display</button>
+        </td>
+
+
+    </tr>
+
+
+</table>
+
+
+<!-- <table class="table table-bordered table-dark">
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>prenom</th>
+        <th>age</th>
+        <th>poste</th>
+        <th> image</th>
+        <th> delete</th>
+
+    </tr>
+    <tr *ngFor='let j of joueur'>
+        <td>{{j.id}}</td>
+        <td>{{j.nom}}</td>
+        <td>{{j.prenom}}</td>
+        <td>{{j.age}}</td>
+        <td>{{j.poste}}</td>
+        <td><img src={{j.image}} alt="Image" class="img-fluid" width="50px"></td>
+        <td>
+            <button class='btn btn-danger' (click)='delete(j.id)'>delete</button>
+        </td>
+
+
+    </tr>
+
+</table> -->

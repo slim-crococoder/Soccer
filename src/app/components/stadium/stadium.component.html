@@ -1,0 +1,26 @@
+<table class="table table-bordered table-dark">
+
+    <tr>
+        <td>{{y._id}}</td>
+        <td width='200px'>{{y.name}}</td>
+        <td width='200px'>{{y.country}}</td>
+        <td width='200px'>{{y.capacity}}</td>
+
+        <!-- 3melna ngif bech mendhahrouch boutonet -->
+        <td *ngIf='!id'>
+            <button class='btn btn-danger' (click)='displayStadium(y._id)'>display</button>
+        </td>
+
+        <td *ngIf='!id'>
+            <button class='btn btn-danger' (click)='deleteStadium(y._id)'>delete</button>
+        </td>
+        <td *ngIf='!id'>
+            <button class='btn btn-danger' (click)='editStadium(y._id)'>edit</button>
+        </td>
+
+
+
+    </tr>
+
+
+</table>
